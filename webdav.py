@@ -83,6 +83,10 @@ def traverse_directory(collection:list):
         if fs.isdir(resource_path): traverse_directory(fs.ls(resource_path, detail=False))
         else: work_files(resource_path)
 
+def sync():
+
+    os.system(f"rclone sync {localpath} {remotepath}")
+
 def main():
     """主程序"""
     global fs
@@ -96,6 +100,7 @@ if __name__ == "__main__":
     username = "用户名"
     password = "密码"
     dirpath = '根目录'
-    localpath = r'本地输出地址'
-    main()
+    localpath = '本地输出地址'
+    remotepath = 'rclone 输入地址'
+    main(); sync()
 
